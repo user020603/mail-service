@@ -21,7 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GetContainerInfomationRequest struct {
+type GetContainerInformationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	StartTime     int64                  `protobuf:"varint,1,opt,name=startTime,proto3" json:"startTime,omitempty"`
 	EndTime       int64                  `protobuf:"varint,2,opt,name=endTime,proto3" json:"endTime,omitempty"`
@@ -29,20 +29,20 @@ type GetContainerInfomationRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetContainerInfomationRequest) Reset() {
-	*x = GetContainerInfomationRequest{}
+func (x *GetContainerInformationRequest) Reset() {
+	*x = GetContainerInformationRequest{}
 	mi := &file_proto_container_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetContainerInfomationRequest) String() string {
+func (x *GetContainerInformationRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetContainerInfomationRequest) ProtoMessage() {}
+func (*GetContainerInformationRequest) ProtoMessage() {}
 
-func (x *GetContainerInfomationRequest) ProtoReflect() protoreflect.Message {
+func (x *GetContainerInformationRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_container_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -54,26 +54,26 @@ func (x *GetContainerInfomationRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetContainerInfomationRequest.ProtoReflect.Descriptor instead.
-func (*GetContainerInfomationRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetContainerInformationRequest.ProtoReflect.Descriptor instead.
+func (*GetContainerInformationRequest) Descriptor() ([]byte, []int) {
 	return file_proto_container_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetContainerInfomationRequest) GetStartTime() int64 {
+func (x *GetContainerInformationRequest) GetStartTime() int64 {
 	if x != nil {
 		return x.StartTime
 	}
 	return 0
 }
 
-func (x *GetContainerInfomationRequest) GetEndTime() int64 {
+func (x *GetContainerInformationRequest) GetEndTime() int64 {
 	if x != nil {
 		return x.EndTime
 	}
 	return 0
 }
 
-type GetContainerInfomationResponse struct {
+type GetContainerInformationResponse struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
 	NumContainers        int64                  `protobuf:"varint,1,opt,name=numContainers,proto3" json:"numContainers,omitempty"`
 	NumRunningContainers int64                  `protobuf:"varint,2,opt,name=numRunningContainers,proto3" json:"numRunningContainers,omitempty"`
@@ -83,20 +83,20 @@ type GetContainerInfomationResponse struct {
 	sizeCache            protoimpl.SizeCache
 }
 
-func (x *GetContainerInfomationResponse) Reset() {
-	*x = GetContainerInfomationResponse{}
+func (x *GetContainerInformationResponse) Reset() {
+	*x = GetContainerInformationResponse{}
 	mi := &file_proto_container_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetContainerInfomationResponse) String() string {
+func (x *GetContainerInformationResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetContainerInfomationResponse) ProtoMessage() {}
+func (*GetContainerInformationResponse) ProtoMessage() {}
 
-func (x *GetContainerInfomationResponse) ProtoReflect() protoreflect.Message {
+func (x *GetContainerInformationResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_container_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -108,33 +108,33 @@ func (x *GetContainerInfomationResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetContainerInfomationResponse.ProtoReflect.Descriptor instead.
-func (*GetContainerInfomationResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetContainerInformationResponse.ProtoReflect.Descriptor instead.
+func (*GetContainerInformationResponse) Descriptor() ([]byte, []int) {
 	return file_proto_container_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetContainerInfomationResponse) GetNumContainers() int64 {
+func (x *GetContainerInformationResponse) GetNumContainers() int64 {
 	if x != nil {
 		return x.NumContainers
 	}
 	return 0
 }
 
-func (x *GetContainerInfomationResponse) GetNumRunningContainers() int64 {
+func (x *GetContainerInformationResponse) GetNumRunningContainers() int64 {
 	if x != nil {
 		return x.NumRunningContainers
 	}
 	return 0
 }
 
-func (x *GetContainerInfomationResponse) GetNumStoppedContainers() int64 {
+func (x *GetContainerInformationResponse) GetNumStoppedContainers() int64 {
 	if x != nil {
 		return x.NumStoppedContainers
 	}
 	return 0
 }
 
-func (x *GetContainerInfomationResponse) GetMeanUptimeRatio() float32 {
+func (x *GetContainerInformationResponse) GetMeanUptimeRatio() float32 {
 	if x != nil {
 		return x.MeanUptimeRatio
 	}
@@ -145,17 +145,17 @@ var File_proto_container_proto protoreflect.FileDescriptor
 
 const file_proto_container_proto_rawDesc = "" +
 	"\n" +
-	"\x15proto/container.proto\x12\x15container_adm_service\"W\n" +
-	"\x1dGetContainerInfomationRequest\x12\x1c\n" +
+	"\x15proto/container.proto\x12\x15container_adm_service\"X\n" +
+	"\x1eGetContainerInformationRequest\x12\x1c\n" +
 	"\tstartTime\x18\x01 \x01(\x03R\tstartTime\x12\x18\n" +
-	"\aendTime\x18\x02 \x01(\x03R\aendTime\"\xd8\x01\n" +
-	"\x1eGetContainerInfomationResponse\x12$\n" +
+	"\aendTime\x18\x02 \x01(\x03R\aendTime\"\xd9\x01\n" +
+	"\x1fGetContainerInformationResponse\x12$\n" +
 	"\rnumContainers\x18\x01 \x01(\x03R\rnumContainers\x122\n" +
 	"\x14numRunningContainers\x18\x02 \x01(\x03R\x14numRunningContainers\x122\n" +
 	"\x14numStoppedContainers\x18\x03 \x01(\x03R\x14numStoppedContainers\x12(\n" +
-	"\x0fmeanUptimeRatio\x18\x04 \x01(\x02R\x0fmeanUptimeRatio2\x96\x01\n" +
-	"\x13ContainerAdmService\x12\x7f\n" +
-	"\x10GetContainerInfo\x124.container_adm_service.GetContainerInfomationRequest\x1a5.container_adm_service.GetContainerInfomationResponseB\fZ\n" +
+	"\x0fmeanUptimeRatio\x18\x04 \x01(\x02R\x0fmeanUptimeRatio2\xa0\x01\n" +
+	"\x13ContainerAdmService\x12\x88\x01\n" +
+	"\x17GetContainerInformation\x125.container_adm_service.GetContainerInformationRequest\x1a6.container_adm_service.GetContainerInformationResponseB\fZ\n" +
 	"./proto/pbb\x06proto3"
 
 var (
@@ -172,12 +172,12 @@ func file_proto_container_proto_rawDescGZIP() []byte {
 
 var file_proto_container_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_proto_container_proto_goTypes = []any{
-	(*GetContainerInfomationRequest)(nil),  // 0: container_adm_service.GetContainerInfomationRequest
-	(*GetContainerInfomationResponse)(nil), // 1: container_adm_service.GetContainerInfomationResponse
+	(*GetContainerInformationRequest)(nil),  // 0: container_adm_service.GetContainerInformationRequest
+	(*GetContainerInformationResponse)(nil), // 1: container_adm_service.GetContainerInformationResponse
 }
 var file_proto_container_proto_depIdxs = []int32{
-	0, // 0: container_adm_service.ContainerAdmService.GetContainerInfo:input_type -> container_adm_service.GetContainerInfomationRequest
-	1, // 1: container_adm_service.ContainerAdmService.GetContainerInfo:output_type -> container_adm_service.GetContainerInfomationResponse
+	0, // 0: container_adm_service.ContainerAdmService.GetContainerInformation:input_type -> container_adm_service.GetContainerInformationRequest
+	1, // 1: container_adm_service.ContainerAdmService.GetContainerInformation:output_type -> container_adm_service.GetContainerInformationResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

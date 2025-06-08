@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ContainerAdmService_GetContainerInfo_FullMethodName = "/container_adm_service.ContainerAdmService/GetContainerInfo"
+	ContainerAdmService_GetContainerInformation_FullMethodName = "/container_adm_service.ContainerAdmService/GetContainerInformation"
 )
 
 // ContainerAdmServiceClient is the client API for ContainerAdmService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ContainerAdmServiceClient interface {
-	GetContainerInfo(ctx context.Context, in *GetContainerInfomationRequest, opts ...grpc.CallOption) (*GetContainerInfomationResponse, error)
+	GetContainerInformation(ctx context.Context, in *GetContainerInformationRequest, opts ...grpc.CallOption) (*GetContainerInformationResponse, error)
 }
 
 type containerAdmServiceClient struct {
@@ -37,10 +37,10 @@ func NewContainerAdmServiceClient(cc grpc.ClientConnInterface) ContainerAdmServi
 	return &containerAdmServiceClient{cc}
 }
 
-func (c *containerAdmServiceClient) GetContainerInfo(ctx context.Context, in *GetContainerInfomationRequest, opts ...grpc.CallOption) (*GetContainerInfomationResponse, error) {
+func (c *containerAdmServiceClient) GetContainerInformation(ctx context.Context, in *GetContainerInformationRequest, opts ...grpc.CallOption) (*GetContainerInformationResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetContainerInfomationResponse)
-	err := c.cc.Invoke(ctx, ContainerAdmService_GetContainerInfo_FullMethodName, in, out, cOpts...)
+	out := new(GetContainerInformationResponse)
+	err := c.cc.Invoke(ctx, ContainerAdmService_GetContainerInformation_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *containerAdmServiceClient) GetContainerInfo(ctx context.Context, in *Ge
 // All implementations must embed UnimplementedContainerAdmServiceServer
 // for forward compatibility.
 type ContainerAdmServiceServer interface {
-	GetContainerInfo(context.Context, *GetContainerInfomationRequest) (*GetContainerInfomationResponse, error)
+	GetContainerInformation(context.Context, *GetContainerInformationRequest) (*GetContainerInformationResponse, error)
 	mustEmbedUnimplementedContainerAdmServiceServer()
 }
 
@@ -62,8 +62,8 @@ type ContainerAdmServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedContainerAdmServiceServer struct{}
 
-func (UnimplementedContainerAdmServiceServer) GetContainerInfo(context.Context, *GetContainerInfomationRequest) (*GetContainerInfomationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetContainerInfo not implemented")
+func (UnimplementedContainerAdmServiceServer) GetContainerInformation(context.Context, *GetContainerInformationRequest) (*GetContainerInformationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContainerInformation not implemented")
 }
 func (UnimplementedContainerAdmServiceServer) mustEmbedUnimplementedContainerAdmServiceServer() {}
 func (UnimplementedContainerAdmServiceServer) testEmbeddedByValue()                             {}
@@ -86,20 +86,20 @@ func RegisterContainerAdmServiceServer(s grpc.ServiceRegistrar, srv ContainerAdm
 	s.RegisterService(&ContainerAdmService_ServiceDesc, srv)
 }
 
-func _ContainerAdmService_GetContainerInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetContainerInfomationRequest)
+func _ContainerAdmService_GetContainerInformation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContainerInformationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContainerAdmServiceServer).GetContainerInfo(ctx, in)
+		return srv.(ContainerAdmServiceServer).GetContainerInformation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ContainerAdmService_GetContainerInfo_FullMethodName,
+		FullMethod: ContainerAdmService_GetContainerInformation_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContainerAdmServiceServer).GetContainerInfo(ctx, req.(*GetContainerInfomationRequest))
+		return srv.(ContainerAdmServiceServer).GetContainerInformation(ctx, req.(*GetContainerInformationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +112,8 @@ var ContainerAdmService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ContainerAdmServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetContainerInfo",
-			Handler:    _ContainerAdmService_GetContainerInfo_Handler,
+			MethodName: "GetContainerInformation",
+			Handler:    _ContainerAdmService_GetContainerInformation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
