@@ -27,7 +27,7 @@ func NewMailService(grpcClient client.IGetContainerInfoClient, logger logger.ILo
 }
 
 func (s *mailService) SendManualContainerReport(cfg *config.Config, startTime, endTime int64) error {
-	resp, err := s.grpcClient.GetContainerInfo(startTime, endTime)
+	resp, err := s.grpcClient.GetContainerInformation(startTime, endTime)
 	if err != nil {
 		s.logger.Error("Failed to get container info", "error", err)
 		return fmt.Errorf("failed to get container info: %w", err)
