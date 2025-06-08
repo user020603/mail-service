@@ -9,6 +9,7 @@ import (
 
 type Config struct {
 	GrpcServerAddr      string
+	RestPort            string
 	AdminEmailAddr      string
 	SenderEmailAddr     string
 	SenderEmailPassword string
@@ -27,8 +28,9 @@ func LoadConfig() *Config {
 
 		configInstance = &Config{
 			GrpcServerAddr:      getEnv("GRPC_SERVER_ADDRESS", "localhost:50051"),
-			AdminEmailAddr:      getEnv("ADMIN_EMAIL_ADDRESS", ""),
-			SenderEmailAddr:     getEnv("SENDER_EMAIL_ADDRESS", ""),
+			RestPort:            getEnv("REST_PORT", "8002"),
+			AdminEmailAddr:      getEnv("ADMIN_EMAIL_ADDR", "winnerwinner2k3@gmail.com"),
+			SenderEmailAddr:     getEnv("SENDER_EMAIL_ADDR", "thanhnt.works@gmail.com"),
 			SenderEmailPassword: getEnv("SENDER_EMAIL_PASSWORD", ""),
 			LogLevel:            getEnv("LOG_LEVEL", "info"),
 			LogFile:             getEnv("LOG_FILE", "../logs/mail.log"),
