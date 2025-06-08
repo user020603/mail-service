@@ -8,7 +8,7 @@ import (
 )
 
 type IGetContainerInfoClient interface {
-	GetContainerInfo(startTime, endTime int64) (*pb.GetContainerInfomationResponse, error)
+	GetContainerInformation(startTime, endTime int64) (*pb.GetContainerInformationResponse, error)
 }
 
 type getContainerInfoClient struct {
@@ -23,10 +23,10 @@ func NewGetContainerInfoClient(client pb.ContainerAdmServiceClient, logger logge
 	}
 }
 
-func (c *getContainerInfoClient) GetContainerInfo(startTime, endTime int64) (*pb.GetContainerInfomationResponse, error) {
-	resp, err := c.client.GetContainerInfo(
+func (c *getContainerInfoClient) GetContainerInformation(startTime, endTime int64) (*pb.GetContainerInformationResponse, error) {
+	resp, err := c.client.GetContainerInformation(
 		context.Background(),
-		&pb.GetContainerInfomationRequest{
+		&pb.GetContainerInformationRequest{
 			StartTime: startTime,
 			EndTime:   endTime,
 		},
