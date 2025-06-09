@@ -31,7 +31,7 @@ func LoadConfig() *Config {
 			RestPort:            getEnv("REST_PORT", "8002"),
 			AdminEmailAddr:      getEnv("ADMIN_EMAIL_ADDR", "winnerwinner2k3@gmail.com"),
 			SenderEmailAddr:     getEnv("SENDER_EMAIL_ADDR", "thanhnt.works@gmail.com"),
-			SenderEmailPassword: getEnv("SENDER_EMAIL_PASSWORD", ""),
+			SenderEmailPassword: getEnv("SENDER_EMAIL_PASSWORD", "sdrgjqzoeosiklor"),
 			LogLevel:            getEnv("LOG_LEVEL", "info"),
 			LogFile:             getEnv("LOG_FILE", "../logs/mail.log"),
 		}
