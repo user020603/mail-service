@@ -13,6 +13,8 @@ import (
 	"thanhnt208/mail-service/internal/service"
 	"thanhnt208/mail-service/pkg/logger"
 	"time"
+
+	"github.com/robfig/cron/v3"
 )
 
 func main() {
@@ -39,7 +41,21 @@ func main() {
 	}
 
 	mailService := service.NewMailService(getContainerInfoClient, logger)
-	mailHandler := rest.NewMailHandler(mailService)
+	mailHandler := rest.NewMailHandler(mailService, cfg)
+
+	c := cron.New()
+	c.AddFunc("0 7 * * *", func() {
+		logger.Info("Running daily report job")
+		if err := mailService.RunDailyReportJob(cfg); err != nil {
+			logger.Error("Failed to run daily report job", "error", err)
+		} else {
+			logger.Info("Daily report job completed successfully")
+		}
+	})
+
+	logger.Info("Starting cron scheduler daily report job at 07:00 AM")
+	c.Start()
+	defer c.Stop()
 
 	r := routes.SetupMailRoutes(mailHandler)
 
