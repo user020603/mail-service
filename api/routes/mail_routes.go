@@ -13,5 +13,9 @@ func SetupMailRoutes(h *rest.MailHandler) *gin.Engine {
 		_ = h.SendManualContainerReport(c)
 	})
 
+	router.GET("api/mail/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{"status": "ok"})
+	})
+
 	return router
 }
