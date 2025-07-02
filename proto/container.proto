@@ -6,6 +6,7 @@ option go_package = "./proto/pb";
 
 service ContainerAdmService {
     rpc GetContainerInformation(GetContainerInformationRequest) returns (GetContainerInformationResponse);
+    rpc GetContainerUptimeDuration(GetContainerInformationRequest) returns (GetContainerUptimeDurationResponse);
 }
 
 message GetContainerInformationRequest {
@@ -18,4 +19,16 @@ message GetContainerInformationResponse {
     int64 numRunningContainers = 2;
     int64 numStoppedContainers = 3;
     float meanUptimeRatio = 4;
+}
+
+message GetContainerUptimeDurationResponse {
+    int64 numContainers = 1;
+    int64 numRunningContainers = 2;
+    int64 numStoppedContainers = 3;
+    ContainerUptimeDetails uptimeDetails = 4;
+}
+
+message ContainerUptimeDetails {
+    int64 totalUptime = 1;  
+    map<string, int64> perContainerUptime = 2;  
 }
