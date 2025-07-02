@@ -9,8 +9,12 @@ import (
 func SetupMailRoutes(h *rest.MailHandler) *gin.Engine {
 	router := gin.Default()
 
-	router.POST("mail/send_period_report", func(c *gin.Context) {
+	router.POST("/send_period_report", func(c *gin.Context) {
 		_ = h.SendManualContainerReport(c)
+	})
+
+	router.POST("/send_uptime_report", func(c *gin.Context) {
+		_ = h.SendUptimeReport(c)
 	})
 
 	return router
