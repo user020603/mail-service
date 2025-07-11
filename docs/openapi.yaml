@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Mail Service API
+  description: API for sending uptime and container reports with JWT-based authentication and scope-based RBAC.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost/api/mail
+
+paths:
+  /send_uptime_ratio:
+    post:
+      summary: Send Manual Container Report
+      tags: [Reports]
+      description: Sends a manual container report for a specified date range to a specific admin email address.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportRequest"
+      responses:
+        "200":
+          description: Report successfully sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Report for period 2023-01-01 to 2023-01-31 has been sent to admin@example.com.
+        "400":
+          description: Invalid request or date format
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal server error while sending report
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      security:
+        - bearerAuth: []
+
+  /send_uptime_duration:
+    post:
+      summary: Send Uptime Report
+      tags: [Reports]
+      description: Sends an uptime report for a specified date range to a specified admin email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportRequest"
+      responses:
+        "200":
+          description: Report successfully sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Uptime Report for period 2023-01-01 to 2023-01-31 has been sent to admin@example.com.
+        "400":
+          description: Invalid request or date format
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal server error while sending report
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+      security:
+        - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    ReportRequest:
+      type: object
+      required:
+        - startDate
+        - endDate
+        - adminEmail
+      properties:
+        startDate:
+          type: string
+          format: date
+          example: "2023-01-01"
+        endDate:
+          type: string
+          format: date
+          example: "2023-01-31"
+        adminEmail:
+          type: string
+          format: email
+          example: "admin@example.com"
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Invalid request data"
