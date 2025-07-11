@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"strconv"
 	"sync"
 
 	"github.com/joho/godotenv"
@@ -15,6 +16,9 @@ type Config struct {
 	SenderEmailPassword string
 	LogLevel            string
 	LogFile             string
+	JWTSecret           string
+	JWTExpiresIn        int
+	RefreshTokenTTL     int
 }
 
 var (
@@ -26,6 +30,15 @@ func LoadConfig() *Config {
 	once.Do(func() {
 		_ = godotenv.Load()
 
+		jwtExpiresIn, err := strconv.Atoi(getEnv("JWT_EXPIRES_IN", "3600"))
+		if err != nil {
+			jwtExpiresIn = 3600
+		}
+		refreshTokenTTL, err := strconv.Atoi(getEnv("REFRESH_TOKEN_TTL", "604800"))
+		if err != nil {
+			refreshTokenTTL = 604800
+		}
+
 		configInstance = &Config{
 			GrpcServerAddr:      getEnv("GRPC_SERVER_ADDRESS", "localhost:50051"),
 			RestPort:            getEnv("REST_PORT", "8002"),
@@ -34,6 +47,9 @@ func LoadConfig() *Config {
 			SenderEmailPassword: getEnv("SENDER_EMAIL_PASSWORD", "sdrgjqzoeosiklor"),
 			LogLevel:            getEnv("LOG_LEVEL", "info"),
 			LogFile:             getEnv("LOG_FILE", "../logs/mail.log"),
+			JWTSecret:           getEnv("JWT_SECRET", "supersecretkey"),
+			JWTExpiresIn:        jwtExpiresIn,
+			RefreshTokenTTL:     refreshTokenTTL,
 		}
 	})
 
