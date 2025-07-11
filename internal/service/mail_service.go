@@ -180,7 +180,7 @@ func (s *mailService) RunDailyReportJob(cfg *config.Config) error {
 	}
 }
 
-func generateUptimeEmailHTMLBody(startTime, endTime time.Time, numContainers, numRunningContainers, numStoppedContainers int, totalUptime time.Duration, perContainerUptime map[string]time.Duration) string {
+func generateUptimeEmailHTMLBody(startTime, endTime time.Time, numContainers, numRunningContainers, numStoppedContainers int, totalUptime time.Duration, _ map[string]time.Duration) string {
     return fmt.Sprintf(`
     <div style="font-family: Arial, sans-serif; color: #222;">
         <p>Dear System Administrator,</p>
