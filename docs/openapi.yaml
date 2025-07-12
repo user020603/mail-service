@@ -97,19 +97,19 @@ components:
     ReportRequest:
       type: object
       required:
-        - startDate
-        - endDate
-        - adminEmail
+        - start_date
+        - end_date
+        - admin_email
       properties:
-        startDate:
+        start_date:
           type: string
           format: date
           example: "2023-01-01"
-        endDate:
+        end_date:
           type: string
           format: date
           example: "2023-01-31"
-        adminEmail:
+        admin_email:
           type: string
           format: email
           example: "admin@example.com"
